@@ -1,9 +1,7 @@
+version: '3.8'
 services:
   vprodb:
-    build:
-      context: ./Docker-files/db
-    image: ragrox123/database
-    container_name: vprodb
+    image: ragrox/vprofiledb
     ports:
       - "3306:3306"
     volumes:
@@ -21,27 +19,20 @@ services:
     ports:
       - "15672:15672"
     environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
 
   vproapp:
-    build:
-      context: ./Docker-files/app
-    image: ragrox123/application
-    container_name: vproapp
+    image: vprocontainers/vprofileapp
     ports:
       - "8080:8080"
-    volumes:
+    volumes: 
       - vproappdata:/usr/local/tomcat/webapps
-  
+
   vproweb:
-    build:
-      context: ./Docker-files/webapplication
-    image: ragrox123/application
-    container_name: vproweb
+    image: vprocontainers/vprofileweb
     ports:
       - "80:80"
-
 volumes:
   vprodbdata: {}
   vproappdata: {}
