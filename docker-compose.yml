@@ -1,6 +1,6 @@
 services:
   vprodb:
-    image: ragrox/vprofiledb
+    image: ragrox123/vprofiledb
     ports:
       - "3306:3306"
     volumes:
@@ -22,14 +22,14 @@ services:
       - RABBITMQ_DEFAULT_PASS=guest
 
   vproapp:
-    image: vprocontainers/vprofileapp
+    image: ragrox123/vprofileapp
     ports:
       - "8080:8080"
     volumes: 
       - vproappdata:/usr/local/tomcat/webapps
 
   vproweb:
-    image: vprocontainers/vprofileweb
+    image: ragrox123/vprofileweb
     ports:
       - "80:80"
 volumes:
