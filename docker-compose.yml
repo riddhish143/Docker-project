@@ -34,15 +34,14 @@ services:
       - "8080:8080"
     volumes:
       - vproappdata:/usr/local/tomcat/webapps
-    
 
-    vproweb:
-      build: 
-        context: ./Docker-files/web
-      image: vprocontainers/vprofileweb
-      container_name: vprodbweb
-      ports:
-        - "80:80"
+  vproweb:
+    build: 
+      context: ./Docker-files/web
+    image: vprocontainers/vprofileweb
+    container_name: vprodbweb
+    ports:
+      - "80:80"
 
 volumes:
   vprodbdata: {}
